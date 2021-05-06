@@ -1,0 +1,32 @@
+<section class="container">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Курсы</h1>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.id %></td>
+        <td><%= course.title %></td>
+        <td><%= link_to 'Показать', course %></td>
+        <td><%= link_to 'Редактировать', edit_course_path(course) %></td>
+        <td><%= link_to 'Удалить', course, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'Добавить курс', new_course_path, class: 'button' %>
+</section>

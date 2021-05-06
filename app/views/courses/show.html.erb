@@ -1,0 +1,16 @@
+<section class="container">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Title:</strong>
+    <%= @course.title %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @course.description %>
+  </p>
+
+  <%= link_to 'Редактировать', edit_course_path(@course), class: 'button' %>
+  <%= link_to 'Назад', courses_path, class: 'pseudo button' %>
+</section>
