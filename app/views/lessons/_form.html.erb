@@ -15,17 +15,17 @@
 
       <div class="mb-3">
         <%= form.label :title, 'Название', class: "label" %>
-        <%= form.text_field :title, { class: "form-control" }  %>
+        <%= form.text_field :title, { class: "form-control" } %>
       </div>
 
       <div class="mb-3">
-        <%= form.label :description, 'Описание', class: "label"  %>
-        <%= form.text_area :description, { class: "form-control" }  %>
+        <%= form.label :description, 'Описание', class: "label" %>
+        <%= form.text_area :description, { class: "form-control" } %>
       </div>
 
       <div class="mb-3">
-        <%= form.label :course_id, 'Курс', class: "label"  %>
-        <%= collection_select(:lesson, :course_id, Course.all.collect, :id, :title, prompt: true ) %>
+        <%= form.label :course_id, 'Курс', class: "label" %>
+        <%= collection_select(:lesson, :course_id, Course.all.collect, :id, :title, { prompt: true }, { class: "form-control" }) %>
       </div>
 
       <div>
