@@ -1,0 +1,10 @@
+<section class="container">
+  <h1>Редакатировать урок</h1>
+
+  <%= render 'form', lesson: @lesson %>
+
+  <div class="flex">
+    <%#= link_to 'Сохранить', @lesson, class: 'btn btn-primary' %>
+    <%= link_to 'Назад', lessons_path, class: 'btn btn-link' %>
+  </div>
+</section>

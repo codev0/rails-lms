@@ -3,6 +3,8 @@
 
   <%= render 'form', course: @course %>
 
-  <%= link_to 'Показать', @course %> |
-  <%= link_to 'Назад', courses_path %>
+  <div class="flex">
+    <%= link_to 'Показать', @course, class: "btn btn-link" %> |
+    <%= link_to 'Назад', courses_path, class: "btn btn-link" %>
+  </div>
 </section>
