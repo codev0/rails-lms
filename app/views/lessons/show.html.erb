@@ -1,4 +1,4 @@
-<section class="container">
+<section class="container py-4">
   <%= render partial: "shared/notice", notice: notice %>
 
   <h1>
@@ -14,7 +14,7 @@
         <ul class="list-group list-group-flush">
           <% @lesson.course.lessons.each do |lesson| %>
             <li class="list-group-item">
-              <%= link_to lesson.title, course_lesson_path(lesson), class: "card-link" %>
+              <%= link_to lesson.title, course_lesson_path(@lesson.course, lesson), class: "card-link" %>
             </li>
           <% end %>
         </ul>
@@ -30,6 +30,6 @@
 
   <div class="flex pt-4">
     <%= link_to 'Редактировать', edit_lesson_path(@lesson), class: 'btn btn-primary' %>
-    <%= link_to 'Назад', lessons_path, class: 'btn btn-link' %>
+    <%= link_to 'Назад', courses_path, class: 'btn btn-link' %>
   </div>
 </section>
