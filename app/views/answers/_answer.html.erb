@@ -8,6 +8,7 @@
 </div>
 
 <p>
+  <%= link_to 'Редактировать', edit_question_answer_path(answer.question, answer) %>
   <%= link_to 'Удалить ответ', [answer.question, answer],
               method: :delete,
               data: { confirm: 'Are you sure?' } %>

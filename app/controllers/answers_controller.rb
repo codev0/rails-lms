@@ -12,6 +12,24 @@ class AnswersController < ApplicationController
     redirect_to question_path(@question)
   end
 
+  def edit
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.find(params[:id])
+  end
+
+  def update
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.find(params[:id])
+
+    respond_to do |format|
+      if @examination.update(examination_params)
+        format.html { redirect_to @examination, notice: 'Exam was successfully updated.' }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   def answer_params

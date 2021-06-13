@@ -3,7 +3,7 @@ class ExaminationsController < ApplicationController
     @examinations = Examination.all
   end
 
-  def show;
+  def show
     @examination = Examination.find(params[:id])
   end
 
@@ -11,7 +11,7 @@ class ExaminationsController < ApplicationController
     @examination = Examination.new
   end
 
-  def edit;
+  def edit
     @examination = Examination.find(params[:id])
   end
 

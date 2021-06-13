@@ -1,0 +1,29 @@
+<section class="container">
+  <h1>Редактировать ответ</h1>
+
+  <%= form_with model: [@question, @answer] do |form| %>
+    <div class="card">
+      <div class="card-body">
+        <div class="mb-3">
+          <%= form.label :title, class: 'form-label' %>
+          <%= form.text_field :title, {class: 'form-control'} %>
+        </div>
+
+        <div class="mb-3">
+          <div class="form-check">
+            <%= form.check_box :correct, class: 'form-check-input' %>
+            <%= form.label :correct, class: 'form-check-label' %>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <%= form.submit 'Обновить ответ', class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="flex">
+    <%#= link_to 'Назад', question_path(@answer.question), class: "btn btn-link" %>
+  </div>
+</section>
