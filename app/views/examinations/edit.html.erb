@@ -1,0 +1,10 @@
+<section class="container py-4">
+  <h1>Редактировать экзамен</h1>
+
+  <%= render 'form', examination: @examination %>
+
+  <div class="flex">
+    <%= link_to 'Показать', @examination, class: "btn btn-primary" %>
+    <%= link_to 'Назад', examination_path, class: "btn btn-link" %>
+  </div>
+</section>

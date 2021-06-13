@@ -1,0 +1,14 @@
+<div>
+  <%= answer.title %>
+  <% if answer.correct %>
+    &#9989;
+  <% else %>
+    &#10060;
+  <% end %>
+</div>
+
+<p>
+  <%= link_to 'Удалить ответ', [answer.question, answer],
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+</p>

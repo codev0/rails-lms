@@ -1,0 +1,10 @@
+<section class="container py-4">
+  <h1>Редактировать вопрос</h1>
+
+  <%= render 'form', question: @question %>
+
+  <div class="flex">
+    <%= link_to 'Показать', @question, class: "btn btn-primary" %>
+    <%= link_to 'Назад', questions_path, class: "btn btn-link" %>
+  </div>
+</section>

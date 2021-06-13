@@ -10,11 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_06_100636) do
+ActiveRecord::Schema.define(version: 2021_06_13_052323) do
+
+  create_table "answers", force: :cascade do |t|
+    t.string "title"
+    t.boolean "correct"
+    t.integer "question_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "examinations", force: :cascade do |t|
+    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -28,5 +43,12 @@ ActiveRecord::Schema.define(version: 2021_05_06_100636) do
     t.index ["course_id"], name: "index_lessons_on_course_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "answers", "questions"
   add_foreign_key "lessons", "courses"
 end

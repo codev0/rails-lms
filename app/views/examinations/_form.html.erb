@@ -1,0 +1,24 @@
+<%= form_with(model: examination) do |form| %>
+  <div class="card mb-4">
+    <div class="card-body">
+      <% if examination.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(examination.errors.count, "error") %> prohibited this exam from being saved:</h2>
+
+          <ul>
+            <% examination.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :title, 'Название', class: "form-label" %>
+        <%= form.text_field :title, { class: "form-control" } %>
+      </div>
+
+      <%= form.submit "Создать", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

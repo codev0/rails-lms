@@ -1,0 +1,22 @@
+<section class="container py-4">
+  <%= render partial: "shared/notice", notice: notice %>
+
+  <h1>
+    <%= @question.title %>
+  </h1>
+
+  <h2>Вопросы</h2>
+  <div>
+    <%= render @question.answers %>
+  </div>
+
+  <h2>Добавить вопрос</h2>
+  <div>
+    <%= render 'answers/form' %>
+  </div>
+
+  <div class="flex pt-4">
+    <%= link_to 'Редактировать', edit_question_path(@question), class: 'btn btn-primary' %>
+    <%= link_to 'Назад', questions_path, class: 'btn btn-link' %>
+  </div>
+</section>

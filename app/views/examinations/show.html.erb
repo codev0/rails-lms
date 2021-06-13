@@ -1,0 +1,12 @@
+<section class="container py-4">
+  <%= render partial: "shared/notice", notice: notice %>
+
+  <h1>
+    <%= @examination.title %>
+  </h1>
+
+  <div class="flex pt-4">
+    <%= link_to 'Редактировать', edit_examination_path(@examination), class: 'btn btn-primary' %>
+    <%= link_to 'Назад', examinations_path, class: 'btn btn-link' %>
+  </div>
+</section>
