@@ -15,5 +15,7 @@ Rails.application.routes.draw do
     resources :answers
   end
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get '/profile', to: 'pages#profile', as: 'page_profile'
+  get '/profile-courses', to: 'pages#profile_courses', as: 'page_profile_courses'
+  get '/calendar', to: 'pages#calendar', as: 'page_calendar'
 end
