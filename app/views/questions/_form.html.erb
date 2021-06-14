@@ -3,7 +3,7 @@
     <div class="card-body">
       <% if question.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(question.errors.count, "error") %> prohibited this exam from being saved:</h2>
+          <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
 
           <ul>
             <% question.errors.each do |error| %>
@@ -16,6 +16,11 @@
       <div class="mb-3">
         <%= form.label :title, 'Название', class: "form-label" %>
         <%= form.text_field :title, { class: "form-control" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :examination_id, 'Экзамен', class: "label" %>
+        <%= collection_select(:question, :examination_id, Examination.all.collect, :id, :title, { prompt: true }, { class: "form-control" }) %>
       </div>
 
       <%= form.submit "Создать", class: "btn btn-primary" %>

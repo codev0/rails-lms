@@ -4,8 +4,13 @@ Rails.application.routes.draw do
   resources :courses do
     resources :lessons
   end
-  resources :lessons
-  resources :examinations
+
+  resources :examinations do
+    resources :questions
+  end
+
+  post '/examinations/:id/check', to: 'examinations#check', as: 'examination_check'
+
   resources :questions do
     resources :answers
   end

@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
-  def edit;
+  def edit
     @question = Question.find(params[:id])
   end
 
@@ -30,6 +30,6 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title)
+    params.require(:question).permit(:title, :examination_id)
   end
 end

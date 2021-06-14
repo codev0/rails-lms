@@ -18,11 +18,11 @@ class ExaminationsController < ApplicationController
   def create
     @examination = Examination.new(examination_params)
 
-    respond_to do |format|
+    respond_to do |f|
       if @examination.save
-        format.html { redirect_to @examination, notice: 'Exam was successfully created.' }
+        f.html { redirect_to @examination, notice: 'Examination was successfully created.' }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        f.html { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -30,19 +30,33 @@ class ExaminationsController < ApplicationController
   def update
     @examination = Examination.find(params[:id])
 
-    respond_to do |format|
+    respond_to do |f|
       if @examination.update(examination_params)
-        format.html { redirect_to @examination, notice: 'Exam was successfully updated.' }
+        f.html { redirect_to @examination, notice: 'Examination was successfully updated.' }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        f.html { render :edit, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
+    @examination = Examination.find(params[:id])
     @examination.destroy
-    respond_to do |format|
-      format.html { redirect_to examination_url, notice: 'Examination was successfully destroyed.' }
+
+    redirect_to examinations_path
+  end
+
+  def check
+    @examination = Examination.find(params[:id])
+    @answers = params[:examination][:answer]
+
+    correct = 0
+    @answers.each do |k, v|
+      @check = Answer.find(k)
+      @check.correct && v['title'] == '1' && correct += 1
+    end
+    respond_to do |f|
+      f.html { redirect_to @examination, notice: "#{correct} of #{@examination.questions.length}" }
     end
   end
 
@@ -50,9 +64,5 @@ class ExaminationsController < ApplicationController
 
   def examination_params
     params.require(:examination).permit(:title)
-  end
-
-  def set_examination
-    @examination = Examination.find(params[:id])
   end
 end

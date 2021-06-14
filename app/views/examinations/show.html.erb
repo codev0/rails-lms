@@ -5,6 +5,29 @@
     <%= @examination.title %>
   </h1>
 
+  <h4 class="mb-3">Вопросы</h4>
+
+  <div>
+    <%= form_with model: @examination, url: examination_check_path(@examination), method: "post" do |exam_form| %>
+      <% @examination.questions.each do |question| %>
+        <%= exam_form.fields_for question, index: question.id do |question_form| %>
+          <div class="mb-3">
+            <h6><%= question.title %></h6>
+            <% question.answers.each do |answer| %>
+              <%= exam_form.fields_for answer, index: answer.id do |answer_form| %>
+                <div class="form-check">
+                  <%= answer_form.check_box :title, class: 'form-check-input' %>
+                  <%= answer_form.label :title, "#{answer.title}", class: 'form-check-label' %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+      <%= exam_form.submit "Отправить", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
   <div class="flex pt-4">
     <%= link_to 'Редактировать', edit_examination_path(@examination), class: 'btn btn-primary' %>
     <%= link_to 'Назад', examinations_path, class: 'btn btn-link' %>
